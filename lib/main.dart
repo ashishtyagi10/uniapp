@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         ),
         home: Scaffold(
           appBar: AppBar(
-            title: const Text('Welcome to Flutter'),
+            title: const Text('Universal App'),
           ),
           body: const Center(
             child: RandomWords(),
@@ -45,6 +45,7 @@ class RandomWords extends StatefulWidget {
 
 class _RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
+  final _saved = <WordPair>{};
   final _biggerFont = const TextStyle(fontSize: 18);
   @override
   Widget build(BuildContext context) {
@@ -56,7 +57,27 @@ class _RandomWordsState extends State<RandomWords> {
           if (index >= _suggestions.length) {
             _suggestions.addAll(generateWordPairs().take(10));
           }
-          return Text(_suggestions[index].asPascalCase);
+          final alreadSaved = _saved.contains(_suggestions[index]);
+          return ListTile(
+            title: Text(
+              _suggestions[index].asPascalCase,
+              style: _biggerFont,
+            ),
+            trailing: Icon(
+              alreadSaved ? Icons.favorite : Icons.favorite_border,
+              color: alreadSaved ? Colors.red : null,
+              semanticLabel: alreadSaved ? 'Remove from saved' : 'Save',
+            ),
+            onTap: () {
+              setState(() {
+                if (alreadSaved) {
+                  _saved.remove(_suggestions[index]);
+                } else {
+                  _saved.add(_suggestions[index]);
+                }
+              });
+            },
+          );
         });
 
     // final wordPair = WordPair.random();
