@@ -63,15 +63,6 @@ class _RandomWordsState extends State<RandomWords> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Universal App'),
-        actions: [
-          IconButton(
-            onPressed: () {}, // todo: figure out how to call WordList method
-            icon: const Icon(Icons.list),
-          ),
-        ],
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
