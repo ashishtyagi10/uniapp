@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uniapp/home/word_list.dart';
+import 'package:uniapp/home/contact_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,7 +39,7 @@ class _RandomWordsState extends State<RandomWords> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
   static const List<Widget> _widgetOptions = <Widget>[
-    WordsList(),
+    ContactsList(),
     Text(
       'Index 1 Search',
       style: optionStyle,

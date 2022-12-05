@@ -1,14 +1,14 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
-class WordsList extends StatefulWidget {
-  const WordsList({super.key});
+class ContactsList extends StatefulWidget {
+  const ContactsList({super.key});
 
   @override
-  State<WordsList> createState() => _WordsListState();
+  State<ContactsList> createState() => _ContactsListState();
 }
 
-class _WordsListState extends State<WordsList> {
+class _ContactsListState extends State<ContactsList> {
   final _suggestions = <WordPair>[];
   final _saved = <WordPair>{};
   final _biggerFont = const TextStyle(fontSize: 18);
@@ -31,10 +31,14 @@ class _WordsListState extends State<WordsList> {
             }
             final alreadSaved = _saved.contains(_suggestions[index]);
             return ListTile(
+              leading: const Icon(Icons.face),
               title: Text(
                 _suggestions[index].asPascalCase,
                 style: _biggerFont,
               ),
+              subtitle:
+                  const Text('4123 Bringhan Drive, Charlotte - NC, 28002'),
+              isThreeLine: true,
               trailing: Icon(
                 alreadSaved ? Icons.favorite : Icons.favorite_border,
                 color: alreadSaved ? Colors.red : null,
